@@ -9,6 +9,13 @@ considered valid V2 cards.
 
 Proposed new optional fields, reasons, details.
 
+TODO: should more settings be a part of it?
+TODO: add alternate_greetings
+
+### creator_notes
+
+TODO
+
 ### system_prompt
 
 TODO
