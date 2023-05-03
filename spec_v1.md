@@ -5,7 +5,7 @@ This exists for reference in case of ambiguity, or for future new implementers.
 [toc]
 
 
-## Embedding method (no changes from V1)
+## Embedding method
 
 TODO: complete and properly write shis section
 
@@ -14,7 +14,7 @@ TODO: complete and properly write shis section
 [Code examples: reading a character card file](./utility_code_snippets.md#reading_a_character_card)
 [Code examples: writing a character card file](./utility_code_snippets.md#writing_a_character_card)
 
-## Existing fields (skip this if you've already implemented V1)
+## Existing fields
 
 ```ts
 type TavernCard = {
