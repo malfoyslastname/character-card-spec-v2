@@ -4,3 +4,19 @@
 - [./spec_v2.md](./spec_v2.md): Specification for "V2". V2 adds new optional fields to V1 and is currently a work in progress.
 - [./utility_code_snippets.md](./utility_code_snippets.md): Code snippets that may be individually referenced by the Explainer or the Specifications.
 
+The V2 spec is fully backward compatible with V1, i.e. all V1 cards are
+considered valid V2 cards.
+
+Proposed new optional fields, reasons, details.
+
+### system_prompt
+
+TODO
+
+### ujb
+
+TODO
+
+### character_book
+
+TODO
