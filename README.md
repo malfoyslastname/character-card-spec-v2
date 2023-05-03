@@ -19,11 +19,15 @@ TODO
 ### system_prompt
 
 TODO
+TODO: should it be opt-in or opt-out?
 
 ### ujb
 
-TODO
+TODO: should it be opt-in or opt-out?
+TODO: should it replace the frontend's ujb or supplement it?
 
 ### character_book
 
 TODO
+
+stacks with frontends' "world book"
