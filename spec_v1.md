@@ -1,27 +1,21 @@
 # Character Card V1: Specification (WIP DRAFT)
 
 This exists for reference in case of ambiguity, or for future new implementers.
+[Read the definitions of MUST, SHOULD, and MAY](./keyword_definitions.md)
 
 [toc]
-
-## Keywords
-
-- **MUST**: Adoption of this spec requires adhering to this requirement.
-- **SHOULD**/**SHOULD NOT**: There may exist valid reasons in particular circumstances to ignore this requirement, but the full implications mut be understood and carefully weighed.
-- **MAY**: A truly optional requirement.
-- **UNSPECIFIED**: Legacy unclear behavior due to lack of existing ecosystem consensus in v1 implementations, or due to lack of foresight when writing v2. Ideally, this should not exist.
-
 
 ## Embedding method
 
 TODO: complete and properly write shis section
 
 - json string encoded in base64 inside the "Chara" EXIF metadata field
-- different for webp and png
+- can also be a normal json but this is discouraged for user-friendliness
+- different for webp and png (TODO)
 [Code examples: reading a character card file](./utility_code_snippets.md#reading_a_character_card)
 [Code examples: writing a character card file](./utility_code_snippets.md#writing_a_character_card)
 
-## Existing fields
+## Fields
 
 The current format can be represented as this TypeScript type:
 

@@ -5,15 +5,9 @@ character cards. V1 refers to the format currently in use across the character
 card ecosystem as of May 4th 2023.
 
 [Character Card V1 Specification for new implementers](./spec_v1.md)
+[Read the definitions of MUST, SHOULD, and MAY](./keyword_definitions.md)
 
 [toc]
-
-## Keywords
-
-- **MUST**: Adoption of this spec requires adhering to this requirement.
-- **SHOULD**/**SHOULD NOT**: There may exist valid reasons in particular circumstances to ignore this requirement, but the full implications mut be understood and carefully weighed.
-- **MAY**: A truly optional requirement.
-- **UNSPECIFIED**: Legacy unclear behavior due to lack of existing ecosystem consensus in v1 implementations, or due to lack of foresight when writing v2. Ideally, this should not exist.
 
 ## New fields
 
@@ -36,7 +30,7 @@ type TavernCard = {
 
   // New fields start here
   system_prompt?: string
-  ujb?: string
+  post_history_instructions?: string
   character_book: CharacterBook
 }
 
@@ -50,7 +44,7 @@ type CharacterBook = {
 
 TODO after explainer
 
-### ujb
+### post_history_instructions
 
 TODO after explainer
 
