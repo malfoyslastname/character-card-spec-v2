@@ -3,14 +3,16 @@
 This exists for reference in case of ambiguity, or for future new implementers.
 [Read the definitions of MUST, SHOULD, and MAY](./keyword_definitions.md)
 
-- [Embedding methods](#embedding-methods)
+## Table of contents
+
+- [Embedding methods](#embedding_methods)
 - [Fields](#fields)
   * [name](#name)
   * [description](#description)
   * [personality](#personality)
   * [scenario](#scenario)
-  * [first_mes](#first-mes)
-  * [mes_example](#mes-example)
+  * [first_mes](#first_mes)
+  * [mes_example](#mes_example)
 
 ## Embedding methods
 

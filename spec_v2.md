@@ -11,16 +11,23 @@ card ecosystem as of May 4th 2023.
 
 ## New fields
 
-All those files are **optional** for backward-compatibility (that is to say, all
-V1). **Optional** means that those fields are **allowed to be absent from the
-JSON object, or `null`**.
-
-FIELD NAMES ARE VERY EARLY TENTATIVE
-
-The full updated V2 spec can be represented by this Typescript type:
+The V1 (current) spec can be described with this TypeScript definition:
 
 ```ts
-type TavernCard = {
+type TavernCardV1 = {
+  name: string
+  description: string
+  personality: string
+  scenario: string
+  first_mes: string
+  mes_example: string
+}
+```
+
+The V2 spec can be described with:
+
+```ts
+type TavernCardV1 = {
   name: string
   description: string
   personality: string
@@ -29,8 +36,11 @@ type TavernCard = {
   mes_example: string
 
   // New fields start here
-  system_prompt?: string
-  post_history_instructions?: string
+  spec: 'chara_card_v2'
+  creator_notes: string
+  system_prompt: string
+  post_history_instructions: string
+  alternate_greetings: Array<string>
   character_book: CharacterBook
 }
 
@@ -39,6 +49,19 @@ type CharacterBook = {
 }
 ```
 
+A frontend supporting both V1 and V2 would hence use a type looking like:
+
+```ts
+type TavernCard = TavernCardV1 | TavernCardV2
+```
+
+### spec
+
+TODO
+
+### creator_notes
+
+TODO
 
 ### system_prompt
 
@@ -47,6 +70,10 @@ TODO after explainer
 ### post_history_instructions
 
 TODO after explainer
+
+### alternate_greetings
+
+TODO
 
 ### character_book
 
