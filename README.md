@@ -52,20 +52,23 @@ The V2 spec can be described with:
 
 ```ts
 type TavernCardV1 = {
-  name: string
-  description: string
-  personality: string
-  scenario: string
-  first_mes: string
-  mes_example: string
-
   // New fields start here
   spec: 'chara_card_v2'
-  creator_notes: string
-  system_prompt: string
-  post_history_instructions: string
-  alternate_greetings: Array<string>
-  character_book?: CharacterBook
+  data: {
+    name: string
+    description: string
+    personality: string
+    scenario: string
+    first_mes: string
+    mes_example: string
+
+    // New fields start here
+    creator_notes: string
+    system_prompt: string
+    post_history_instructions: string
+    alternate_greetings: Array<string>
+    character_book?: CharacterBook
+  }
 }
 
 type CharacterBook = {
@@ -79,14 +82,13 @@ A frontend supporting both V1 and V2 would hence use a type looking like:
 type TavernCard = TavernCardV1 | TavernCardV2
 ```
 
-What this means in plain JavaScript terms is that given a card named
-`character`:
+What this means in plain JavaScript terms is that given a card named `chara`:
 
-- if `(character.spec === 'chara_card_v2')`, then you can be sure
-that `creator_notes`, `system_prompt`, `post_history_instructions` and
-`alternate_greetings` are all present (neither null, undefined, nor absent).
-`character_book` may still be absent.
-- if `(character.spec === undefined)`, then you can be sure that those fields are absent.
+- if `(chara.spec === 'chara_card_v2')`, then you can be sure
+- if `(chara.spec === undefined)`, then you can be sure that the card contains nothing but `chara.name`, `chara.description`, `chara.personality`, `chara.scenario`, `chara.first_mes`, `chara.mes_example`.
+that `chara.data.name`, `chara.data.description`, `chara.data.personality`, `chara.data.scenario`, `chara.data.first_mes`, `chara.data.mes_example`, `chara.data.creator_notes`, `chara.data.system_prompt`, `chara.data.post_history_instructions` and `chara.data.alternate_greetings` are all present (neither null, undefined, nor absent). `chara.data.character_book` may still be absent.
+
+The reason why old and new fields are nested into a `data` object in the V2 spec is to prevent V1-only editors (e.g. ZoltanAI, if the author cannot be reached) from successfully loading a V2 card, but discarding its V2-only fields.
 
 ### `spec`
 
