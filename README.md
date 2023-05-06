@@ -65,7 +65,7 @@ type TavernCardV1 = {
   system_prompt: string
   post_history_instructions: string
   alternate_greetings: Array<string>
-  character_book: CharacterBook
+  character_book?: CharacterBook
 }
 
 type CharacterBook = {
@@ -84,8 +84,8 @@ What this means in plain JavaScript terms is that given a card named
 
 - if `(character.spec === 'chara_card_v2')`, then you can be sure
 that `creator_notes`, `system_prompt`, `post_history_instructions` and
-`alternate_greetings` and `character_book` are all present (neither null,
-undefined, nor absent).
+`alternate_greetings` are all present (neither null, undefined, nor absent).
+`character_book` may still be absent.
 - if `(character.spec === undefined)`, then you can be sure that those fields are absent.
 
 ### `spec`
