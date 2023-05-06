@@ -51,8 +51,7 @@ type TavernCardV1 = {
 The V2 spec can be described with:
 
 ```ts
-type TavernCardV1 = {
-  // New fields start here
+type TavernCardV2 = {
   spec: 'chara_card_v2'
   data: {
     name: string
