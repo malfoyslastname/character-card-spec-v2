@@ -3,17 +3,25 @@
 This exists for reference in case of ambiguity, or for future new implementers.
 [Read the definitions of MUST, SHOULD, and MAY](./keyword_definitions.md)
 
-[toc]
+- [Embedding methods](#embedding-methods)
+- [Fields](#fields)
+  * [name](#name)
+  * [description](#description)
+  * [personality](#personality)
+  * [scenario](#scenario)
+  * [first_mes](#first-mes)
+  * [mes_example](#mes-example)
 
-## Embedding method
+## Embedding methods
 
-TODO: complete and properly write shis section
+- .json file with no image. Discouraged for user-friendliness.
+- PNG: JSON string encoded in base64 inside the "Chara" EXIF metadata field.
+- WEBP: Plaintext (non-encoded) JSON string inside the "UserComment" EXIF metadata field.
 
-- json string encoded in base64 inside the "Chara" EXIF metadata field
-- can also be a normal json but this is discouraged for user-friendliness
-- different for webp and png (TODO)
-[Code examples: reading a character card file](./utility_code_snippets.md#reading_a_character_card)
-[Code examples: writing a character card file](./utility_code_snippets.md#writing_a_character_card)
+### Code examples
+
+- [Code examples: reading a character card file](./utility_code_snippets.md#reading_a_character_card)
+- [Code examples: writing a character card file](./utility_code_snippets.md#writing_a_character_card)
 
 ## Fields
 
@@ -30,30 +38,76 @@ type TavernCard = {
 }
 ```
 
-All fields are mandatory and **MUST default to the empty string, not undefined or null** (TODO: confirm this)
+All fields are mandatory and **MUST default to the empty string, not null or absent/undefined**
 
-In prompts sent to the AI, all fields except `name` **MUST** replace the following magic strings, with a **case-insensitive** search (e.g. <BOT> and <bot> both work):
-- {{char}} or <BOT> to the value of the card's `name` field
-- {{user}} or <USER> to the application's set display name.
+In prompts sent to the AI, the fields `description`, `personality`, `scenario`, `first_mes`, and `mes_example` **MUST** replace the following magic strings, with a **case-insensitive** search (e.g. `<BOT>` and `<bot>` both work):
+- {{char}} or `<BOT>` to the value of the card's `name` field
+- {{user}} or `<USER>` to the application's set display name.
 
 A default value for the user's name **MUST** exist.
 
-Whether {{user}} and <USER> should be replaced inside the `name` field is an **UNSPECIFIED** edge case. (TODO: See if existing implementations all agree on this, then if yes, make that officially specified)
+Whether {{user}} and `<USER>` should be replaced inside the `name` field is an **UNSPECIFIED** edge case.
 
 Details for each field follows.
 
-### name
+### `name`
 
 Used to identify a character.
 
-In **all other fields**, the magic strings `{{char}}` and `<BOT>` (case-insensitive) **MUST** get replaced by this value.
+### `description`
 
-### description
+Description of the character.
 
-### personality
+**SHOULD** be included by default in every prompt.
 
-### scenario
+Front-facing alternative names used by existing projects:
 
-### first_mes
+- ZoltanAI: "Personality"
+- Agnai: "Persona Attributes" and "{{personality}}"
+- Silly: "Description"
 
-### mes_example
+### `personality`
+
+A short summary of the character's personality.
+
+**SHOULD** be included by default in every prompt.
+
+Front-facing alternative names used by existing projects:
+
+- ZoltanAI: "Summary"
+- Agnai: No name yet
+- Silly: "Personality summary"
+
+### `scenario`
+
+The current context and circumstances to the conversation.
+
+**SHOULD** be included by default in every prompt.
+
+### `first_mes`
+
+First message sent by the chatbot, also known as "greeting."
+
+The chatbot **MUST** be the first one to send a message, and that message
+**MUST** be the string inside `first_mes`.
+
+### `mes_example`
+
+Example conversations. It **MUST** be expected that botmakers format example
+conversations like this:
+
+```
+<START>
+{{user}}: hi
+{{char}}: hello
+<START>
+{{user}}: hi
+Haruhi: hello
+```
+
+`<START>` marks the beginning of a new conversation and **MAY** be transformed
+(e.g. into an OpenAI System message saying "Start a new conversation.")
+
+Example conversations **SHOULD**, by default, only be included in the prompt
+until actual conversation fills up the context size, and then be pruned to make
+room for actual conversation history. This behavior **MAY** be configurable by the user.

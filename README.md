@@ -15,7 +15,7 @@ TODO: add alternate_greetings
 
 ### spec
 
-The value for this field should be `"chara-card-v2"`.
+The value for this field should be `"chara_card_v2"`.
 
 Ensuring character cards have a `spec` field will make it easier to parse cards if we create non-backward-compatible card formats in the future.
 
