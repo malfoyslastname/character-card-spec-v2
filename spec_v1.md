@@ -38,7 +38,7 @@ type TavernCard = {
 }
 ```
 
-All fields are mandatory and **MUST default to the empty string, not null or absent/undefined**
+All fields are mandatory and **MUST** default to the empty string, not null or absent/undefined.
 
 In prompts sent to the AI, the fields `description`, `personality`, `scenario`, `first_mes`, and `mes_example` **MUST** replace the following magic strings, with a **case-insensitive** search (e.g. `<BOT>` and `<bot>` both work):
 - {{char}} or `<BOT>` to the value of the card's `name` field
