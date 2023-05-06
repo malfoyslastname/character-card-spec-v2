@@ -1,4 +1,4 @@
-# Character Card V1: Specification (WIP DRAFT)
+# Character Card V1: Specification
 
 This exists for reference in case of ambiguity, or for future new implementers.
 [Read the definitions of MUST, SHOULD, and MAY](./keyword_definitions.md)
