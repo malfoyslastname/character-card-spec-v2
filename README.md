@@ -9,7 +9,7 @@
 - [./spec_v2.md](./spec_v2.md): Specification for "V2". **Not yet written.**
 - [./utility_code_snippets.md](./utility_code_snippets.md): Code snippets that may be individually referenced by the Explainer or the Specifications.
 - [./keyword_definitions.md](./keyword_definitions.md): Definitions of MUST, SHOULD, and MAY as used in the specifications.
-- #1: General discussion & summary of project owner positions
+- [General discussion & summary of project owner positions](https://github.com/malfoyslastname/character-card-spec-v2/issues/1)
 
 ## Table of contents
 
