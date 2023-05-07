@@ -24,7 +24,23 @@
 
 ## Introduction
 
-The Character Card V2 Specification is a proposal for a new format for character cards containing new fields. Briefly, the aims of this V2 spec are:
+The Character Card V2 Specification is a proposal for a new format for character cards containing new fields. It is aimed to be adopted by the ecosystem of projects currently using the unofficial "V1" specification, meaning:
+
+- Character repositories hosting "V1" character cards:
+  - [the Pygmalion booru](https://booru.plus/+pygmalions) (NSFW)
+  - [characterhub.org](https://www.characterhub.org)
+- Frontends compatible with cards downloaded on those character repositories:
+  - [agnai](https://github.com/luminai-companion/agn-ai/)
+  - [SillyTavern](https://github.com/SillyLossy/TavernAI)
+  - [RisuAI](https://risu.pages.dev)
+- Standalone "V1" card editors:
+  - [ZoltanAI](https://zoltanai.github.io/character-editor/)
+ 
+If your project has been omitted, please get in contact via the [General discussion issue](https://github.com/malfoyslastname/character-card-spec-v2/issues/1).
+  
+**Note:** The main Tavern branch and their character repository Characloud has already drifted from this ecosystem, so although we aim to remain compatible with their ecosystem, consensus between the above-mentioned projects is the main priority.
+
+Briefly, the aims of this V2 spec are:
 
 - With the fields `system_prompt` and `post_history_instructions`, to give botmakers control over the experience that users have with their bots. Some of this control was first lost when abandoning Character.AI, and then further lost when the "UJB/Jailbreak" tech was discovered. It is a source of frustration for both botmakers who don't know what kind of experience their users are having, and for users who have to fiddle with very sensitive and frustrating settings.
 - With the field `character_book`, to make it more convenient to attach a lorebook to a character, so users don't have to download and import two separate files. This creates a new "World book" vs "Character book" distinction.
@@ -168,7 +184,7 @@ that users are properly getting their recommended world books, and the extra
 effort required for users to download and import external worldbooks turns them
 away from using this kind of character card.
 
-Character books must stack with world books, not replace them. If a user has an active world book, and a character card has a character, then the active chat should pull from both books. (**Needs confirmation**. While this is the ideal scenario, maintainers should confirm whether there is a reliable way to combine two lorebooks which may have different weighing scales.)
+Character books should stack with world books, not replace them (this is a recommendation and not a requirement). If a user has an active world book, and a character card has a character, then the active chat should pull from both books. (The two lorebooks may use different weighing scales, so it is proposed that **the Character Book should be used first**, and then if there is any remaining space allocated for the prompt's lorebook section, the World Book should be used second.)
 
 **The format used will be neither Agnai's nor Silly's**, but should be compatible with the current features of both. Frontends may choose not to ignore fields they don't support, but are encouraged try to adapt them to their own system. Code examples for this will be provided in a future draft of this repository.
 
