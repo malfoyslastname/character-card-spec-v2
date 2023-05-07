@@ -168,7 +168,7 @@ that users are properly getting their recommended world books, and the extra
 effort required for users to download and import external worldbooks turns them
 away from using this kind of character card.
 
-Character books must stack with world books, not replace them. If a user has a world book with information about fruits, and a character card has a world book with information about (**Needs confirmation**. While this is the ideal scenario, maintainers should confirm whether there is a reliable way to combine two lorebooks which may have different weighing scales.)
+Character books must stack with world books, not replace them. If a user has an active world book, and a character card has a character, then the active chat should pull from both books. (**Needs confirmation**. While this is the ideal scenario, maintainers should confirm whether there is a reliable way to combine two lorebooks which may have different weighing scales.)
 
 **The format used will be neither Agnai's nor Silly's**, but should be compatible with the current features of both. Frontends may choose not to ignore fields they don't support, but are encouraged try to adapt them to their own system. Code examples for this will be provided in a future draft of this repository.
 
