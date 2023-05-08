@@ -103,9 +103,9 @@ Frontends **MAY** offer ways to replace or supplement character cards' system pr
 
 ### `post_history_instructions`
 
-Frontends' default behavior **MUST** be to replace what users understand to be the "ujb/jailbreak" setting with the value inside this field. (Exception: if the field value is an empty string, the user's "system prompt" setting or an internal fallback **MUST** be used.)
+Frontends' default behavior **MUST** be to replace what users understand to be the "ujb/jailbreak" setting with the value inside this field. (Exception: if the field value is an empty string, the user's "ujb/jailbreak" setting or an internal fallback **MUST** be used.)
 
-Frontends **MAY** offer ways to replace or supplement character cards' system prompt (in addition to directly editing the card), but it **MUST NOT** be the default behavior.
+Frontends **MAY** offer ways to replace or supplement character cards' post_history_instructions (in addition to directly editing the card), but it **MUST NOT** be the default behavior.
 
 ### `alternate_greetings`
 
