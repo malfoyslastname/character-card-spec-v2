@@ -42,7 +42,7 @@ The Character Card V2 Specification is a proposal for a new format for character
 - Frontends compatible with cards downloaded on those character repositories:
   - [agnai](https://github.com/luminai-companion/agn-ai/)
   - [SillyTavern](https://github.com/SillyLossy/TavernAI)
-  - [RisuAI](https://risu.pages.dev)
+  - [RisuAI](https://github.com/kwaroran/RisuAI)
 - Standalone "V1" card editors:
   - [ZoltanAI](https://zoltanai.github.io/character-editor/)
  
