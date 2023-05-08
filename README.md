@@ -1,5 +1,7 @@
 # Character Card V2: Explainer (First draft)
 
+**UPDATE May 8th 2023: New fields added: spec version, tags, creator, character version, extensions**
+
 ## Repository map
 
 - [./README.md](./README.md): This document. An explanation of what V2 proposes,
@@ -21,6 +23,12 @@
   * [`post_history_instructions`](#post_history_instructions)
   * [`alternate_greetings`](#alternate_greetings)
   * [`character_book`](#character_book)
+- [More proposed fields as of May 8th 2023](#more_proposed_fields_as_of_may_8th_2023)
+  * [`spec_version`](#spec_version)
+  * [`tags`](#tags)
+  * [`creator`](#creator)
+  * [`character_version`](#character_version)
+  * [`extensions`](#extensions)
 
 ## Introduction
 
@@ -69,6 +77,7 @@ The V2 spec can be described with:
 ```ts
 type TavernCardV2 = {
   spec: 'chara_card_v2'
+  spec_version: '2.0' // May 8th addition
   data: {
     name: string
     description: string
@@ -83,6 +92,12 @@ type TavernCardV2 = {
     post_history_instructions: string
     alternate_greetings: Array<string>
     character_book?: CharacterBook
+
+    // May 8th additions
+    tags: Array<string>
+    creator: string
+    character_version: number
+    extensions: Record<string, any> // see details for explanation
   }
 }
 
@@ -99,10 +114,38 @@ type TavernCard = TavernCardV1 | TavernCardV2
 
 What this means in plain JavaScript terms is that given a card named `chara`:
 
-- if `(chara.spec === undefined)`, then you can be sure that the card contains nothing but `chara.name`, `chara.description`, `chara.personality`, `chara.scenario`, `chara.first_mes`, `chara.mes_example`.
-- if `(chara.spec === 'chara_card_v2')`, then you can be sure that `chara.data.name`, `chara.data.description`, `chara.data.personality`, `chara.data.scenario`, `chara.data.first_mes`, `chara.data.mes_example`, `chara.data.creator_notes`, `chara.data.system_prompt`, `chara.data.post_history_instructions` and `chara.data.alternate_greetings` are all present (neither null, undefined, nor absent). `chara.data.character_book` may still be absent.
+If `chara.spec === undefined`, then you can be sure that the card contains nothing but:
 
-The reason why old and new fields are nested into a `data` object in the V2 spec is to prevent V1-only editors (e.g. ZoltanAI, if the author cannot be reached) from successfully loading a V2 card, but discarding its V2-only fields.
+- `chara.name`
+- `chara.description`
+- `chara.personality`
+- `chara.scenario`
+- `chara.first_mes`
+- `chara.mes_example`
+
+And all these fields are mandatory (empty string being the default). This is the "V1" specification.
+
+If `chara.spec === 'chara_card_v2'`, then you can be sure that the following fields are present (empty string as the default unless specified otherwise):
+
+- `chara.data.name`
+- `chara.data.description`
+- `chara.data.personality`
+- `chara.data.scenario`
+- `chara.data.first_mes`
+- `chara.data.mes_example`
+- (New fields start here:)
+- `chara.data.creator_notes`
+- `chara.data.system_prompt`
+- `chara.data.post_history_instructions`
+- `chara.data.alternate_greetings`
+- `chara.data.tags` (default: empty array)
+- `chara.data.creator`
+- `chara.data.character_version`
+- `chara.data.extensions` (default: `{}`)
+
+`chara.data.character_book` may or may not be present.
+
+The reason why old and new fields are nested into a `data` object in the V2 spec is to prevent V1-only editors (e.g. ZoltanAI, if the creator cannot be reached) from successfully loading a V2 card, but silently destroying its V2-only fields.
 
 ### `spec`
 
@@ -192,3 +235,66 @@ The Character Card V2 spec needs to use a different format for Character Books
 than Agnai's and Silly's, because their format might change over time. We do not
 want other frontends to have to keep up with the format changes of other
 frontends, so there should be an immutable spec for character cards.
+
+## More proposed fields as of May 8th 2023
+
+### `spec_version`
+
+Must be (tentatively) `"2.0"`.
+
+If `spec` indicates a "major version", `spec_version` indicates "minor versions", or extensions to an existing spec. Future minor versions for the same spec **MUST** be non-breaking, i.e. they may add fields, but not remove them or change the type of existing fields. This will make it easier to extend the Character Card V2 spec in the future.
+
+### `tags`
+
+An array of strings containing tags helping to categorize character cards. These tags **SHOULD NOT** appear in the prompt, and **SHOULD NOT** be used for prompt engineering. (Botmakers do not expect the tags to be used for this purpose.) Tags MAY be used for UI sorting and filtering (case-insensitive recommended).
+
+No standardization specified, the tag strings are completely free.
+
+characterhub.org and the pygmalion booru already have tags, so V1 cards can be easily converted to V2 with tags, at least on characterhub.
+
+### `creator`
+
+The name of the creator of the card.
+
+Already present on characterhub.com, can be automatically added with no effort on the botmaker's part. Characterhub.com also already supports anonymous upload, so there's no issue with accidentally putting a botmaker's name if they don't want to.
+
+### `character_version`
+
+Version of the character card.
+
+It's common for people to download multiple versions of the same character. This field will make it possible for applications to more easily distinguish between versions. Characterhub has an automatic versioning system already, so for users of characterhub this is no additional effort on their part.
+
+NOTE: This is currently specified as a string, not a number.
+
+### `extensions`
+
+This field is for applications to store extra data that is not part of the
+specification.
+
+Its default value is `{}`.
+
+It's an object whose property names must be strings, and whose property values
+may be any valid JSON value. Consider it a space where applications can store
+any data not codified by the Character Card V2 specification.
+
+Any application importing V2 character cards must be careful not to destroy
+unknown fields inside the `extensions` object.
+
+Example:
+
+```json
+{
+  "data": {
+    "extensions": {
+      "text_color": "#ff3333",
+      "agnai/voice": { "service": "elevenlabs", "id": "Bella" },
+      "risu": {
+        "expressions": {
+          "happy": "https://cdn.risu.com/mary_happy.png",
+          "sad": "https://cdn.risu.com/mary_sad.png"
+        }
+      }
+    }
+  }
+}
+```
