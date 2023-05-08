@@ -122,7 +122,7 @@ Frontends **MUST** use the character lorebook by default.
 Character editors **MUST** save character lorebooks in the specified format.
 (**Lorebook format not yet defined, but will be before official adoption.**)
 
-Character lorebook **SHOULD** stack with user "world book"/"world info"/"memory book". (Character book SHOULD take full precedence over world book.)
+Character lorebook **SHOULD** stack with user "world book"/"world info"/"memory book". (Character book **SHOULD** take full precedence over world book.)
 
 ### `tags`
 
