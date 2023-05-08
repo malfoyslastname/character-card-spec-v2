@@ -1,6 +1,8 @@
 # Character Card V2: Explainer (First draft)
 
-**UPDATE May 8th 2023: New fields added: spec version, tags, creator, character version, extensions**
+**UPDATE May 8th 2023:**
+- New fields added: spec version, tags, creator, character version, extensions.
+- [V2 spec](./spec_v2.md) written. It is much more concise than the explainer.
 
 ## Repository map
 
@@ -8,7 +10,7 @@
     including justification for some of its choices. Completely up for changes
     depending on the feedback of developers and botmakers in the ecosystem.
 - [./spec_v1.md](./spec_v1.md): Specification for "V1". V1 refers to the format currently in use across the character card ecosystem as of May 4th 2023. For reference, and for new implementers.
-- [./spec_v2.md](./spec_v2.md): Specification for "V2". **Not yet written.**
+- [./spec_v2.md](./spec_v2.md): Specification for "V2".
 - [./utility_code_snippets.md](./utility_code_snippets.md): Code snippets that may be individually referenced by the Explainer or the Specifications.
 - [./keyword_definitions.md](./keyword_definitions.md): Definitions of MUST, SHOULD, and MAY as used in the specifications.
 - [General discussion & summary of project owner positions](https://github.com/malfoyslastname/character-card-spec-v2/issues/1)
@@ -16,14 +18,14 @@
 ## Table of contents
 
 - [Introduction](#introduction)
-- [Proposed fields](#proposed_fields)
+- [Proposed fields](#proposed-fields)
   * [`spec`](#spec)
   * [`creator_notes`](#creator_notes)
   * [`system_prompt`](#system_prompt)
   * [`post_history_instructions`](#post_history_instructions)
   * [`alternate_greetings`](#alternate_greetings)
   * [`character_book`](#character_book)
-- [More proposed fields as of May 8th 2023](#more_proposed_fields_as_of_may_8th_2023)
+- [More proposed fields as of May 8th 2023](#more-proposed-fields-as-of-may-8th-2023)
   * [`spec_version`](#spec_version)
   * [`tags`](#tags)
   * [`creator`](#creator)

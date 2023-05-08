@@ -5,7 +5,7 @@ This exists for reference in case of ambiguity, or for future new implementers.
 
 ## Table of contents
 
-- [Embedding methods](#embedding_methods)
+- [Embedding methods](#embedding-methods)
 - [Fields](#fields)
   * [name](#name)
   * [description](#description)
@@ -18,7 +18,7 @@ This exists for reference in case of ambiguity, or for future new implementers.
 
 - .json file with no image. Discouraged for user-friendliness.
 - PNG: JSON string encoded in base64 inside the "Chara" EXIF metadata field.
-- WEBP: Plaintext (non-encoded) JSON string inside the "UserComment" EXIF metadata field.
+- WEBP: Plaintext (non-encoded) JSON string inside the "UserComment" EXIF metadata field. **This is deprecated as it breaks Unicode characters. Main Tavern uses a new encoding which we have not yet move to. You are encouraged to stick to PNG.**
 
 ### Code examples
 
