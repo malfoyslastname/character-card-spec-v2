@@ -62,7 +62,7 @@ type TavernCardV2 = {
     // May 8th additions
     tags: Array<string>
     creator: string
-    character_version: number
+    character_version: string
     extensions: Record<string, any>
   }
 }
@@ -132,7 +132,7 @@ There is no restriction on what strings are valid.
 
 This field **SHOULD NOT** be used in the prompt engineering.
 
-This field **MAY** be used for frontend sorting/filtering purposes (SHOULD be
+This field **MAY** be used for frontend sorting/filtering purposes (**SHOULD** be
 case-insensitive).
 
 ### `creator`
