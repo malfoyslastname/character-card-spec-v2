@@ -103,8 +103,44 @@ type TavernCardV2 = {
   }
 }
 
+/**
+ * ? as in `name?: string` means the `name` property may be absent from the JSON
+ * (aka this property is optional)
+ * Optional properties are allowed to be unsupported by editors and disregarded by
+ * frontends, however they must never be destroyed if already in the data.
+ *
+ * the `extensions` properties may contain arbitrary key-value pairs, but you are encouraged
+ * to namespace the keys to prevent conflicts, and you must never destroy
+ * unknown key-value pairs from the data. `extensions` is mandatory and must
+ * default to `{}`. `extensions` exists for the character book itself, and for
+ * each entry.
+ **/
 type CharacterBook = {
-  // TBD
+  name?: string
+  description?: string
+  scan_depth?: number // agnai: "Memory: Chat History Depth"
+  token_budget?: number // agnai: "Memory: Context Limit"
+  recursive_scanning?: boolean // no agnai equivalent. whether entry content can trigger other entries
+  extensions: Record<string, any>
+  entries: Array<{
+    keys: Array<string>
+    content: string
+    extensions: Record<string, any>
+    enabled: boolean
+    insertion_order: number // if two entries inserted, lower "insertion order" = inserted higher
+
+    // FIELDS WITH NO CURRENT EQUIVALENT IN SILLY
+    name?: string // not used in prompt engineering
+    priority?: number // if token budget reached, lower priority value = discarded first
+
+    // FIELDS WITH NO CURRENT EQUIVALENT IN AGNAI
+    id?: number // not used in prompt engineering
+    comment?: string // not used in prompt engineering
+    selective?: boolean // if `true`, require a key from both `keys` and `secondary_keys` to trigger the entry
+    secondary_keys?: Array<string> // see field `selective`. ignored if selective == false
+    constant?: boolean // if true, always inserted in the prompt (within budget limit)
+    position?: 'before_char' | 'after_char' // whether the entry is placed before or after the character defs
+  }>
 }
 ```
 
