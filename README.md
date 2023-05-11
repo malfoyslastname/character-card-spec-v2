@@ -98,7 +98,7 @@ type TavernCardV2 = {
     // May 8th additions
     tags: Array<string>
     creator: string
-    character_version: number
+    character_version: string
     extensions: Record<string, any> // see details for explanation
   }
 }
