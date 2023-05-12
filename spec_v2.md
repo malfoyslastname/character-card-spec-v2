@@ -1,4 +1,4 @@
-# Character Card V2: Specification (WIP DRAFT)
+# Character Card V2: Specification
 
 This document describes new JSON fields added to the embedded JSON of V1
 character cards. V1 refers to the format currently in use across the character
@@ -7,6 +7,9 @@ card ecosystem as of May 4th 2023.
 [Character Card V1 Specification for new implementers](./spec_v1.md)
 
 [Read the definitions of MUST, SHOULD, and MAY](./keyword_definitions.md)
+
+This spec has been validated and is ready for adoption, **except for the
+CharacterBook typing pending approval.**
 
 ## Table of contents
 

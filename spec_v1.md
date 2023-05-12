@@ -17,13 +17,8 @@ This exists for reference in case of ambiguity, or for future new implementers.
 ## Embedding methods
 
 - .json file with no image. Discouraged for user-friendliness.
-- PNG: JSON string encoded in base64 inside the "Chara" EXIF metadata field.
-- WEBP: Plaintext (non-encoded) JSON string inside the "UserComment" EXIF metadata field. **This is deprecated as it breaks Unicode characters. Main Tavern uses a new encoding which we have not yet move to. You are encouraged to stick to PNG.**
-
-### Code examples
-
-- [Code examples: reading a character card file](./utility_code_snippets.md#reading_a_character_card)
-- [Code examples: writing a character card file](./utility_code_snippets.md#writing_a_character_card)
+- PNG/APNG: JSON string encoded in base64 inside the "Chara" EXIF metadata field.
+- WEBP: **Not covered by the spec due to technical ambiguities.**
 
 ## Fields
 
