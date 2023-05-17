@@ -105,8 +105,8 @@ type TavernCardV2 = {
 /**
  * ? as in `name?: string` means the `name` property may be absent from the JSON
  * (aka this property is optional)
- * Optional properties are allowed to be unsupported by editors and disregarded by
- * frontends, however they must never be destroyed if already in the data.
+ * OPTIONAL PROPERTIES ARE ALLOWED TO BE UNSUPPORTED BY EDITORS AND DISREGARDED BY
+ * FRONTENDS, however they must never be destroyed if already in the data.
  *
  * the `extensions` properties may contain arbitrary key-value pairs, but you are encouraged
  * to namespace the keys to prevent conflicts, and you must never destroy
@@ -127,6 +127,7 @@ type CharacterBook = {
     extensions: Record<string, any>
     enabled: boolean
     insertion_order: number // if two entries inserted, lower "insertion order" = inserted higher
+    case_sensitive?: boolean
 
     // FIELDS WITH NO CURRENT EQUIVALENT IN SILLY
     name?: string // not used in prompt engineering
