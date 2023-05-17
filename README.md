@@ -1,14 +1,15 @@
 # Character Card V2: Explainer
 
+**UPDATE May 17th 2023:**
+- Spec approved.
+
 **UPDATE May 8th 2023:**
 - New fields added: spec version, tags, creator, character version, extensions.
 - [V2 spec](./spec_v2.md) written. It is much more concise than the explainer.
 
 ## Repository map
 
-- [./README.md](./README.md): This document. An explanation of what V2 proposes,
-    including justification for some of its choices. Completely up for changes
-    depending on the feedback of developers and botmakers in the ecosystem.
+- [./README.md](./README.md): This document. An explanation of what V2 proposes, including justification for some of its choices.
 - [./spec_v1.md](./spec_v1.md): Specification for "V1". V1 refers to the format currently in use across the character card ecosystem as of May 4th 2023. For reference, and for new implementers.
 - [./spec_v2.md](./spec_v2.md): Specification for "V2".
 - [./keyword_definitions.md](./keyword_definitions.md): Definitions of MUST, SHOULD, and MAY as used in the specifications.
@@ -46,7 +47,7 @@ The Character Card V2 Specification is a proposal for a new format for character
   - [ZoltanAI](https://zoltanai.github.io/character-editor/)
  
 If your project has been omitted, please get in contact via the [General discussion issue](https://github.com/malfoyslastname/character-card-spec-v2/issues/1).
-  
+
 **Note:** The main Tavern branch and their character repository Characloud has already drifted from this ecosystem, so although we aim to remain compatible with their ecosystem, consensus between the above-mentioned projects is the main priority.
 
 Briefly, the aims of this V2 spec are:
