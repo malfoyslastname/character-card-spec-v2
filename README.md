@@ -1,5 +1,8 @@
 # Character Card V2: Explainer
 
+**UPDATE June 04th 2023:**
+- Utility library released: [lib](https://www.npmjs.com/package/character-card-utils), [docs](https://malfoyslastname.github.io/chara-card-utils-docs/modules.html), [demo (with online validator/parser and other utilities)](https://malfoyslastname.github.io/chara-card-utils-web/)
+
 **UPDATE May 17th 2023:**
 - Spec approved.
 
