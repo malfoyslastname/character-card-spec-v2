@@ -138,11 +138,15 @@ The value for this field **MUST NOT** be used inside prompts. The value for this
 
 Frontends' default behavior **MUST** be to replace what users understand to be the "system prompt" global setting with the value inside this field. (Exception: if the field value is an empty string, the user's "system prompt" setting or an internal fallback **MUST** be used.)
 
+Frontends **MUST** support the `{{original}}` placeholder, which is replaced with the "system prompt" string that the frontend would have used in the absence of a character `system_prompt` (e.g. the user's own system prompt).
+
 Frontends **MAY** offer ways to replace or supplement character cards' system prompt (in addition to directly editing the card), but it **MUST NOT** be the default behavior.
 
 ### `post_history_instructions`
 
 Frontends' default behavior **MUST** be to replace what users understand to be the "ujb/jailbreak" setting with the value inside this field. (Exception: if the field value is an empty string, the user's "ujb/jailbreak" setting or an internal fallback **MUST** be used.)
+
+Frontends **MUST** support the `{{original}}` placeholder, which is replaced with the "ujb/jailbreak" string that the frontend would have used in the absence of a character `system_prompt` (e.g. the user's own ujb/jailbreak).
 
 Frontends **MAY** offer ways to replace or supplement character cards' post_history_instructions (in addition to directly editing the card), but it **MUST NOT** be the default behavior.
 
