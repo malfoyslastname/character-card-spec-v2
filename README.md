@@ -1,6 +1,9 @@
 # Character Card V2: Explainer
 
-**UPDATE June 04th 2023:**
+**UPDATE June 22th 2023:**
+- `{{original}}` placeholder in `system_prompt` and `post_history_instructions` added to the [V2 spec](./spec_v2.md).
+
+**UPDATE June 4th 2023:**
 - Utility library released: [lib](https://www.npmjs.com/package/character-card-utils), [docs](https://malfoyslastname.github.io/chara-card-utils-docs/modules.html), [demo (with online validator/parser and other utilities)](https://malfoyslastname.github.io/chara-card-utils-web/)
 
 **UPDATE May 17th 2023:**
